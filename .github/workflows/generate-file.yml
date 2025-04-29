@@ -13,11 +13,13 @@ jobs:
       - name: Print a Test Message
         run: echo "GitHub Actions workflow is running successfully!"
 
-      - name: Update package list
-        run: sudo yum upgrade -y
-
-      - name: Install Ansible
-        run: sudo yum install -y ansible
+      - name: Update package list and install ansible
+        run: |
+          sudo yum upgrade -y
+          sudo yum install -y ansible
 
       - name: Verify Installaiton
         run: ansible --version
+
+      - name: Run Ansible Playbook
+        run: ansible-playbook -i localhost, playbook.yml
