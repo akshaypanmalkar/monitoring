@@ -1,0 +1,17 @@
+- hosts: localhost
+  gather_facts: no
+  vars_files:
+    - values.yml
+  tasks:
+    - name: Generate config from template
+      template:
+        src: template.j2
+        dest: /tmp/rendered.yml
+
+    - name: Print rendered config
+      command: cat /tmp/rendered.yml
+      register: output
+
+    - name: Show output in logs
+      debug:
+        msg: "{{ output.stdout_lines }}"
