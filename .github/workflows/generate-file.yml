@@ -14,10 +14,10 @@ jobs:
         run: echo "GitHub Actions workflow is running successfully!"
 
       - name: Update package list
-        run: sudo apt update
+        run: sudo yum install
 
       - name: Install Ansible
-        run: sudo apt install -y ansible
+        run: sudo yum install -y ansible
 
       - name: Verify Installaiton
         run: ansible --version
